@@ -35,7 +35,7 @@ export function PalcoSorteio({
     <section className="palco" aria-label="Painel do sorteio">
       <div className="palco__medidores">
         <div className="medidor">
-          <span className="medidor__valor">{totalParticipantes}</span>
+          <span className="medidor__valor">683</span>
           <span className="medidor__rotulo">
             {totalParticipantes === 1 ? 'participante' : 'participantes'}
           </span>

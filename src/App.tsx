@@ -90,10 +90,8 @@ export default function App() {
 
       <header className="topo">
         <p className="topo__marca">Sorteio online</p>
-        <h1 className="topo__titulo">Sorteio de ganhadores</h1>
-        <p className="topo__subtitulo">
-          {totalVencedores} nomes são escolhidos entre os participantes e revelados um a um.
-        </p>
+        <h1 className="topo__titulo">Sorteio.com</h1>
+       
       </header>
 
       <main className="miolo">
@@ -133,12 +131,7 @@ export default function App() {
       </main>
 
       <footer className="rodape">
-        <ImportarJson
-          desabilitado={status === 'sorteando'}
-          nomeArquivo={nomeArquivo}
-          onCarregar={carregarArquivo}
-          onErro={setErroImportacao}
-        />
+       
 
         <p className="rodape__nota">
           Sorteio realizado no próprio navegador, com <code>crypto.getRandomValues</code> e
