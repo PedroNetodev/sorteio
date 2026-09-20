@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Confete } from './components/Confete';
-import { ImportarJson } from './components/ImportarJson';
 import { PainelVencedores } from './components/PainelVencedores';
 import { PalcoSorteio } from './components/PalcoSorteio';
 import comentariosPadrao from './data/comentarios.json';
@@ -21,11 +20,10 @@ import {
 } from './lib/participantes';
 
 export default function App() {
-  const [comentarios, setComentarios] = useState<readonly unknown[]>(() =>
+  const [comentarios] = useState<readonly unknown[]>(() =>
     lerListaDeComentarios(comentariosPadrao),
   );
-  const [nomeArquivo, setNomeArquivo] = useState<string | null>(null);
-  const [erroImportacao, setErroImportacao] = useState<string | null>(null);
+  const [erroImportacao] = useState<string | null>(null);
 
   const preSelecionados = useMemo(() => lerPreSelecionados(preSelecionadosPadrao), []);
 
@@ -63,21 +61,6 @@ export default function App() {
 
   const nomeRolando = useRolagem(nomesParaRolar, status === 'sorteando');
 
-  const carregarArquivo = useCallback(
-    (dados: unknown, nome: string) => {
-      try {
-        const lista = lerListaDeComentarios(dados);
-        setComentarios(lista);
-        setNomeArquivo(nome);
-        setErroImportacao(null);
-        // Um conjunto novo de participantes invalida o resultado anterior.
-        reiniciar();
-      } catch (erro) {
-        setErroImportacao(erro instanceof Error ? erro.message : 'JSON inválido.');
-      }
-    },
-    [reiniciar],
-  );
 
   const temAleatoriedadeSegura = aleatoriedadeDisponivel();
   const podeSortear = temAleatoriedadeSegura && extracao.candidatos.length > 0;
