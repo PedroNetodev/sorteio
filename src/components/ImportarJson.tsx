@@ -9,12 +9,11 @@ export interface PropsImportarJson {
 }
 
 /**
- * Troca o JSON de comentários sem precisar rebuildar o projeto.
+ * Troca o arquivo de participantes sem precisar rebuildar o projeto.
  *
- * O arquivo é lido no próprio navegador e nunca sai da máquina: não há upload,
- * servidor nem requisição de rede envolvida. Cada sorteio novo costuma ter uma
- * exportação de comentários diferente, e sem isso seria preciso editar o código
- * fonte a cada rodada.
+ * Fica no rodapé de propósito: é controle de operação, não parte do espetáculo.
+ * O arquivo é lido no próprio navegador e nunca sai da máquina — não há upload,
+ * servidor nem requisição de rede envolvida.
  */
 export function ImportarJson({
   nomeArquivo,
@@ -43,27 +42,27 @@ export function ImportarJson({
   }
 
   return (
-    <div className="importar">
-      <label className="importar__rotulo" htmlFor="arquivo-comentarios">
-        Arquivo de comentários
+    <div className="fonte">
+      <label className="fonte__rotulo" htmlFor="arquivo-participantes">
+        Arquivo de participantes
       </label>
 
       <input
         accept="application/json,.json"
-        className="importar__campo"
+        className="fonte__campo"
         disabled={desabilitado}
-        id="arquivo-comentarios"
+        id="arquivo-participantes"
         onChange={(evento) => {
           void processarArquivo(evento);
         }}
         type="file"
       />
 
-      <p className="importar__ajuda">
+      <p className="fonte__ajuda">
         {nomeArquivo === null
-          ? 'Usando o comentarios.json de exemplo do projeto. Selecione um arquivo para trocar.'
+          ? 'Usando o arquivo de exemplo do projeto.'
           : `Em uso: ${nomeArquivo}`}{' '}
-        O arquivo é processado no navegador e não é enviado para nenhum servidor.
+        Processado no navegador, sem envio para servidor.
       </p>
     </div>
   );

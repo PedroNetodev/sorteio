@@ -9,8 +9,13 @@
 /** Quantos nomes serão sorteados a partir do JSON de comentários. */
 export const QUANTIDADE_SORTEADOS = 5;
 
-/** Intervalo entre a revelação de um sorteado e o próximo, em milissegundos. */
-export const INTERVALO_REVELACAO_MS = 1100;
+/**
+ * Intervalo entre a revelação de um ganhador e o próximo, em milissegundos.
+ *
+ * A lista final tem 15 nomes, então valores altos deixam a exibição arrastada:
+ * 600 ms fecha o sorteio em torno de 9 segundos.
+ */
+export const INTERVALO_REVELACAO_MS = 600;
 
 /**
  * Remove o autor da publicação do pool de candidatos.

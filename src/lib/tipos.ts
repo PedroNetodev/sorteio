@@ -5,9 +5,6 @@
 /** Estados possíveis do sorteio. */
 export type StatusSorteio = 'ocioso' | 'sorteando' | 'concluido';
 
-/** Como um participante entrou na lista final. */
-export type OrigemParticipante = 'pre-selecionado' | 'sorteado';
-
 /**
  * Os campos de um comentário exportado que o sorteio realmente lê.
  *
